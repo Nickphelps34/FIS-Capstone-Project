@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_12_212957) do
+ActiveRecord::Schema.define(version: 2023_01_12_214348) do
 
   create_table "cards", force: :cascade do |t|
     t.string "card_type"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2023_01_12_212957) do
     t.string "card_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.string "deck_name"
+    t.string "deck_color"
+    t.string "deck_commander"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,4 +40,5 @@ ActiveRecord::Schema.define(version: 2023_01_12_212957) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "decks", "users"
 end

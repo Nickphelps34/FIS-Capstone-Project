@@ -1,3 +1,3 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :id, :"card-type", :"mana-value", :"card-color", :"card-name"
+  attributes :id, :card_type, :mana_value, :card_color, :card_name
 end

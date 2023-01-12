@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "start seeding"
+
+User.destroy_all
+Card.destroy_all
+puts "seeding Users"
+
+
+puts "seeding Cards"
+
+
+puts "seeding Decks"
+
+
+puts "Seeding done"
