@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :collections
   resources :decks
   resources :cards
   resources :users
