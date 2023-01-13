@@ -1,12 +1,18 @@
-import logo from './logo.svg';
+import { Routes } from 'react-router-dom';
 import './App.css';
+import NavBar from './NavBar';
+// import {Routes, Route} from "react-router-dom"
+
 
 function App() {
+  
+  
+  
+  
   return (
     <div className="App">
-      <header className="App-header">
         <h1>Hello World</h1>
-      </header>
+
     </div>
   );
 }
