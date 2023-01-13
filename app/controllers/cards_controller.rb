@@ -4,6 +4,9 @@ class CardsController < ApplicationController
     render json: Card.all
   end
 
+  # def show
+
+  # end
 
 
 end
