@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   # Custome Route
   post "/login", to: "sessions#create"
   delete '/sessions', to: "sessions#destroy"
+  get    "/userInSession", to:"sessions#get_logged_in_user" 
+  delete '/logout/:id', to: 'sessions#logout'
+  get "/cookie-click", to: "sessions#click"
 
 end

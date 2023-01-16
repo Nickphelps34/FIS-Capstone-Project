@@ -2,7 +2,6 @@
 
 
   const NavBar = (props) => {
-    console.log(props)
     return (
     <div className="navbar">
         {/* <NavLink className="nav-links-home" to="/">Home</NavLink>
