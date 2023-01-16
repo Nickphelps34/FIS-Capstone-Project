@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create!(user_params)
+    user = User.create(user_params)
     if
-      render json: user, status: :create
+      render json: user, status: :created
     else
       render json: user.errors, status: :unprocessable_entity
     end
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       render json: user
     else
       render json: user.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy

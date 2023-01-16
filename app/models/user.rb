@@ -3,6 +3,6 @@ class User < ApplicationRecord
   has_many :decks
   has_secure_password
 
-  validates :email, :username, :password, presence: true
+  validates :email, :name, :password, presence: true
 end
 
