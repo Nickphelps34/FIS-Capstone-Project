@@ -7,21 +7,30 @@ import Cards from './CardsComponent';
 import Home from './Home';
 
 
-const cardsURL = "/cards"
+// fetch ("http://localhost:3000/")
+// .then(r => r.json())
+// .then(console.log)
+
+
 const name = "Nick Phelps"
+
 const App = () => {
   const [page, setPage] = useState("/")
   
-  useEffect(()=>{
-    fetch(cardsURL)
-      .then(r => r.json())
-      .then(arrayOfData =>
-        setPage(arrayOfData)
-        )
-  }, [])
+  // useEffect(()=>{
+  //   fetch('http://localhost:3000/')
+  //     .then(r => r.json())
+  //     .then(arrayOfData =>
+  //       setPage(arrayOfData)
+  //       )
+  // }, [])
   
-  
-  return (
+  fetch ("http://localhost:3000/")
+  .then(r => r.json())
+  .then(console.log)
+
+
+  return(
     <>
       <div className="App">Final Project
 
