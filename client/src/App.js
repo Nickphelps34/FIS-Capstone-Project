@@ -1,19 +1,25 @@
+import React, {useState} from 'react';
 import { Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
-// import {Routes, Route} from "react-router-dom"
+import TestForm from './Testform';
 
-
-function App() {
+const name = "Nick"
+const App = () => {
   
+  const [page, setPage] = useState("/")
   
   
   
   return (
-    <div className="App">
-        <h1>Hello World</h1>
+    <>
+      <div className="App">Final Project
 
-    </div>
+      <NavBar name={name} age="26" gender="male" />
+      <TestForm/>
+
+      </div>
+    </>
   );
 }
 
