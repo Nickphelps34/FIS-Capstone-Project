@@ -25,7 +25,7 @@ const App = () => {
   //       )
   // }, [])
   
-  fetch ("http://localhost:3000/")
+  fetch ("http://localhost:3000/users")
   .then(r => r.json())
   .then(console.log)
 
