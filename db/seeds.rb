@@ -14,7 +14,7 @@ Collection.destroy_all
 
 
 puts "seeding Users"
-u1 = User.create!(name: "Nick", email: "Nickphelps34@gmail.com", "password_digest": "", "password": "7412")
+u1 = User.create!(name: "Nick", username: "Nickphelps34", email: "Nickphelps34@gmail.com", "password_digest": "", "password": "7412")
 
 puts "seeding Cards"
 c1 = Card.create!(card_type: "Creature", mana_value: 2, card_color: "Black", card_name: "Misery's Shadow" )

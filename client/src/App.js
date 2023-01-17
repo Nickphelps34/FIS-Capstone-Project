@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
-// import { Routes } from 'react-router-dom';
-import './App.css';
-import NavBar from './NavBar';
-import TestForm from './Testform';
-import Cards from './CardsComponent';
-import Home from './Home';
+// import React, {useState, useEffect} from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+// import './App.css';
+// import NavBar from './NavBar';
+// import TestForm from './TestForm';
+// import Cards from './CardsComponent';
+// import Home from './Home';
 
 
 // fetch ("http://localhost:3000/")
@@ -12,19 +12,20 @@ import Home from './Home';
 // .then(console.log)
 
 
-const name = "Nick Phelps"
+// const name = "Nick Phelps"
 
 const App = () => {
-  const [page, setPage] = useState("/")
+//   const [page, setPage] = useState([])
   
   // useEffect(()=>{
-  //   fetch('http://localhost:3000/')
+  //   fetch('http://localhost:3000/cards')
   //     .then(r => r.json())
   //     .then(arrayOfData =>
   //       setPage(arrayOfData)
   //       )
   // }, [])
-  
+  // console.log(setPage)
+
   fetch ("http://localhost:3000/users")
   .then(r => r.json())
   .then(console.log)
@@ -33,12 +34,11 @@ const App = () => {
   return(
     <>
       <div className="App">Final Project
-
-      <NavBar name={name} age="26" gender="male" />
-      <Home/>
-      <TestForm/>
-      <Cards/>
-
+        <BrowserRouter>
+          <Routes>
+            <Route/>
+          </Routes>
+        </BrowserRouter>
       </div>
     </>
   );
