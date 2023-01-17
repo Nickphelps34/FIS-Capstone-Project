@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Decks = () => {
+const SignUp = () => {
 
   return (
+
     <>
-      <div>Deck Component</div>
+      <div>Sign up Here!</div>
       <Link to="/home" className="btn">Home</Link>
     </>
+
   )
 
 }
-export default Decks
+export default SignUp
