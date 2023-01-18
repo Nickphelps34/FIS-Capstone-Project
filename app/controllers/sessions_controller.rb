@@ -30,14 +30,14 @@ include ActionController::Cookies
 
     def get_logged_in_user
       user_already_loggedin = User.find_by( id: session[:user_id])
+      
       render json: user_already_loggedin
     end
 
-    # def destroy
-    #   user = User.find_by(id: params[:id])
-    #   #Deletes the cookie for the seassion
-    #   cookies.delete :user_id
-    #   head :ok
-    # end
+    def destroy
+      session.delete( :user_id )
+
+      render json: {}
+    end
 
 end

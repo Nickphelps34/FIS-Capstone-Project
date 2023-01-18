@@ -32,9 +32,7 @@ Rails.application.routes.draw do
 
   get "/userInSession", to:"sessions#get_logged_in_user"
   
-  #post "/login", to: "application#login"
-
-  #delete '/sessions', to: "sessions#destroy"
+  delete "/logout", to:"sessions#destroy"
   
   get    "/users/:id", to:"sessions#get_logged_in_user" 
   

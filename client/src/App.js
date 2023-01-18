@@ -63,14 +63,28 @@ const App = () => {
     
   setLoggedInUser( hopefullyAUser )
   })
+}
 
-
+  const handleLogout = () => {
+    
+    fetch ("/logout", {method: "DELETE"} )
+      .then(r=>r.json())
+      .then( deleteResponse => {
+        setLoggedInUser( null )
+      } )
+  
   }
+  
 
   return(
     <>
       <div className="App">Final Project
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
+        
+        
+        <button onClick={handleLogout}>LogOut?</button>
+        
+        
         
         <NavBar/> 
             <Routes>
@@ -81,6 +95,12 @@ const App = () => {
               <Route path="/signUp" element={<SignUp/>}/>
             </Routes>
           <h1>Welcome! Login?</h1>
+          
+          
+          
+          
+          
+          
           <form onSubmit={ handleLoginSubmit }>
           <input 
             onChange={ handleOnChangeToUserLoginIn }
