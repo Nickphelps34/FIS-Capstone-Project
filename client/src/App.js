@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
-import TestForm from './TestForm';
+//import TestForm from './TestForm';
 import Cards from './CardsComponent';
 import Home from './Home';
 import Decks from './Decks';
 import SignUp from './SignUp';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 
 // fetch ("http://localhost:3000/")
@@ -15,16 +15,16 @@ import { useLocation } from 'react-router-dom';
 // .then(console.log)
 
 
-const name = "Nick Phelps"
+// const name = "Nick Phelps"
 
 const App = () => {
-  const location = useLocation();
-  const [page, setPage] = useState([])
+  // const location = useLocation();
+  // const [page, setPage] = useState([])
   
 
-  const handleClick  = () => {
-    console.log(location);
-  }
+  // const handleClick  = () => {
+  //   console.log(location);
+  // }
   // useEffect(()=>{
   //   fetch('http://localhost:3000/cards')
   //     .then(r => r.json())
@@ -42,16 +42,16 @@ const App = () => {
   return(
     <>
       <div className="App">Final Project
-        <NavBar/>
-          <BrowserRouter>
+        <NavBar/> 
+          
             <Routes>
-              <Route path = "/" element={<div>This is my Capstone Project: Commander Collection</div>}   />
+              <Route path= "/" element={<div>Log in/Sign Up go Here</div>}   />
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards/>}/>
               <Route path="/decks" element={<Decks/>}/>
               <Route path="/signUp" element={<SignUp/>}/>
             </Routes>
-          </BrowserRouter>
+          
       </div>
     </>
   );
