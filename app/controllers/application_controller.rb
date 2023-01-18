@@ -6,9 +6,22 @@ class ApplicationController < ActionController::API
   
   
   def login
-    byebug
+    user_to_find_to_login = User.find_by( username: params[:username] ) 
 
-    user_to_find = User.find_by()
+    if 
+      user_to_find_to_login
+
+        if user_to_find_to_login.authenticate(params[:password])
+          render json: user_to_find_to_login
+        else
+          render json: { error: " Incorrect Password " }
+        end
+      
+    else
+      render json: { error: "Username or Password Don't Match" }
+    
+    end
+
   end
 
 

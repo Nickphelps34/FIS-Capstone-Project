@@ -18,37 +18,10 @@ import { useState } from 'react';
 // const name = "Nick Phelps"
 
 const App = () => {
-  // const location = useLocation();
-  // const [page, setPage] = useState([])
-  
 
-  // const handleClick  = () => {
-  //   console.log(location);
-  // }
-  // useEffect(()=>{
-  //   fetch('http://localhost:3000/cards')
-  //     .then(r => r.json())
-  //     .then(arrayOfData =>
-  //       setPage(arrayOfData)
-  //       )
-  // }, [])
-  // console.log(setPage)
-
-  // console.log("BYEBUG!!!")
-  // fetch ( "http://localhost:3000/login", 
-  // {
-    
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify( 
-  //     {
-  //       username: "Nick",
-  //       password: "7412"
-  //     } )
+  const [loggedInUser, setLoggedInUser] = useState( null )
+  console.log("State of loggedInUser", loggedInUser)
   
-  // } )
-  // .then(r => r.json())
-  // .then(console.log)
   const [userToLogin, setUserToLogin] =useState(
     {
       username: "",
@@ -72,7 +45,10 @@ const App = () => {
   
   } )
   .then(r => r.json())
-  .then(console.log)
+  .then(hopefullyAUser => {console.log(hopefullyAUser)
+    
+  setLoggedInUser( hopefullyAUser )
+  })
 
 
   }
@@ -80,10 +56,18 @@ const App = () => {
   return(
     <>
       <div className="App">Final Project
-        <h1>Welcome! Login?</h1>
+        { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
         
-        <form onSubmit={ handleLoginSubmit }>
-          
+        <NavBar/> 
+            <Routes>
+              <Route path= "/" element={<div></div>}   />
+              <Route path="/home" element={<Home/>}/>
+              <Route path="/cards" element={<Cards/>}/>
+              <Route path="/decks" element={<Decks/>}/>
+              <Route path="/signUp" element={<SignUp/>}/>
+            </Routes>
+          <h1>Welcome! Login?</h1>
+          <form onSubmit={ handleLoginSubmit }>
           <input 
             onChange={ handleOnChangeToUserLoginIn }
             name="username"
@@ -104,16 +88,6 @@ const App = () => {
         <br></br><br></br>
         
         <h1>Or Sign-out?</h1>
-        
-        
-        <NavBar/> 
-            <Routes>
-              <Route path= "/" element={<div></div>}   />
-              <Route path="/home" element={<Home/>}/>
-              <Route path="/cards" element={<Cards/>}/>
-              <Route path="/decks" element={<Decks/>}/>
-              <Route path="/signUp" element={<SignUp/>}/>
-            </Routes>
           
       </div>
     </>
