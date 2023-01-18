@@ -5,7 +5,7 @@ const Decks = () => {
 
   return (
     <>
-      <div>Deck Component</div>
+      <h1>Deck Component</h1>
       <Link to="/home" className="btn">Home</Link>
     </>
   )

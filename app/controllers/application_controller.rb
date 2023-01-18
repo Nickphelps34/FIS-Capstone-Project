@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActiveRecord::RecordInvalid, with: :user_unable_to_create
+  rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
   
   
+  def login
+    byebug
+
+    user_to_find = User.find_by()
+  end
+
+
   private
   
   #grab render_unprocessable_entity on any unprocessable entity error
