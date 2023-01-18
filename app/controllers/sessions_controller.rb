@@ -1,22 +1,43 @@
 class SessionsController < ApplicationController
+  #skip_before_action :authorized_user, only: [:create, :show]
 
-  def create
-    user = User.find_by(name:params[:name])
+include ActionController::Cookies
+    def create
+      #byebug
+      user_to_find_to_login = User.find_by( username: params[:username] ) 
+      if 
+        user_to_find_to_login
   
-    if user && user.authenticate(params[:password])
-        #Logs in user, and confirms log in
-      render json: user, status: :ok
-        #Creates cookie
-      cookies[:user_id] = { value: user.id, expires: 1.year.from_now }
-    else
-      render json: {errors: "Invalid Password or User"}, status: :unauthorized
+          if user_to_find_to_login.authenticate(params[:password])
+            
+            session[:user_id] = user_to_find_to_login.id
+            
+            render json: user_to_find_to_login
+          
+          else
+
+            render json: { error: " Incorrect Password " }
+          
+          end
+        
+      else
+        render json: { error: "Username or Password Don't Match" }
+      
+      end
+  
     end
-    def destroy
-      user = User.find_by(id: params[:id])
-      #Deletes the cookie for the seassion
-      cookies.delete :user_id
-      head :ok
+    
+
+    def get_logged_in_user
+      user_already_loggedin = User.find_by( id: session[:user_id])
+      render json: user_already_loggedin
     end
-  end
+
+    # def destroy
+    #   user = User.find_by(id: params[:id])
+    #   #Deletes the cookie for the seassion
+    #   cookies.delete :user_id
+    #   head :ok
+    # end
 
 end

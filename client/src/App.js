@@ -7,7 +7,7 @@ import Cards from './CardsComponent';
 import Home from './Home';
 import Decks from './Decks';
 import SignUp from './SignUp';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 // fetch ("http://localhost:3000/")
@@ -20,7 +20,19 @@ import { useState } from 'react';
 const App = () => {
 
   const [loggedInUser, setLoggedInUser] = useState( null )
-  console.log("State of loggedInUser", loggedInUser)
+  //console.log("State of loggedInUser", loggedInUser)
+
+  useEffect(
+    ()=>{
+
+      fetch( "/userInSession" )
+      .then( r => r.json() )
+      .then( userAlreadyLoggedIn =>  
+        setLoggedInUser(userAlreadyLoggedIn) )
+      }, 
+    []
+    )
+  
   
   const [userToLogin, setUserToLogin] =useState(
     {
@@ -36,8 +48,10 @@ const App = () => {
   }
 
   const handleLoginSubmit=(e)=> {e.preventDefault()
-      console.log('ByeBug!!')
-    fetch ( "http://localhost:3000/login", 
+      
+    console.log('ByeBug!!')
+
+    fetch ( "/login", 
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -28,11 +28,13 @@ Rails.application.routes.draw do
   
  
   # Custome Route
-  # post "/login", to: "sessions#create"
-  
-  post "/login", to: "application#login"
+  post "/login", to:"sessions#create"
 
-  delete '/sessions', to: "sessions#destroy"
+  get "/userInSession", to:"sessions#get_logged_in_user"
+  
+  #post "/login", to: "application#login"
+
+  #delete '/sessions', to: "sessions#destroy"
   
   get    "/users/:id", to:"sessions#get_logged_in_user" 
   
