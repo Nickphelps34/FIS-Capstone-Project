@@ -1,6 +1,11 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
+import NavBar from './NavBar';
+import Cards from './CardsComponent';
+import Home from './Home';
+import Decks from './Decks';
+import SignUp from './SignUp';
 import { useState, useEffect } from 'react';
 
 
@@ -11,6 +16,11 @@ import { useState, useEffect } from 'react';
 
 const App = () => {
 
+
+  const [toggle, setToggle] = useState(false)
+  const toggleForm = () =>{
+    setToggle(!toggle)
+  }
   const [loggedInUser, setLoggedInUser] = useState( null )
   //console.log("State of loggedInUser", loggedInUser)
 
@@ -69,13 +79,23 @@ const App = () => {
 
   return(
     <>
-      <div className="App">Final Project
+      <div className="App">
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
+        <NavBar/> 
+            <Routes>
+              <Route path= "/" element={<div></div>} />
+              <Route path="/home" element={<Home/>}/>
+              <Route path="/cards" element={<Cards/>}/>
+              <Route path="/decks" element={<Decks/>}/>
+              <Route path="/signup" element={<SignUp/>}/>
+            </Routes>
           
             <br></br><br></br>
             <br></br><br></br>
           
-          <h1>Welcome! Login?</h1>
+          { !loggedInUser ?
+            <h1>Welcome! Login?</h1> : <></>}
+          { !loggedInUser ?
           <form onSubmit={ handleLoginSubmit }>
           <input 
             onChange={ handleOnChangeToUserLoginIn }
@@ -87,18 +107,17 @@ const App = () => {
             type="password"
             name="password"
             />
-
           <button type="submit" >submit</button>
 
         </form>
-        
+          : <></>}
         
         <br></br><br></br>
         <br></br><br></br>
         
-        <h1>Or Sign-out?</h1>
-        <button onClick={handleLogout}>LogOut?</button>
-          
+        {
+         loggedInUser ?  <h1> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>
+        } 
       </div>
     </>
   );

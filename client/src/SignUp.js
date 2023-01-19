@@ -11,7 +11,7 @@ const SignUp = () => {
     password: ""
   })
   const [errors, setErrors] = useState([])
-  //const navigate = useNavigate()
+  const navigate = useNavigate()
 
 const { email, name, username, password} = signupFormData
 
@@ -31,15 +31,12 @@ const onFormSubmit = (e) => {
     headers: { "Content-Type": 'application/json' },
     body: JSON.stringify(signupFormData)
   }).then(r => r.json())
-    .then(r => {console.log(r)
-      
-      
-      
-      // if (r.errors) {
-      //   setErrors(r.errors)
-      // } else {
-      //   navigate ('/', {replace: true})
-      // }
+    .then(r => {
+      if (r.errors) {
+        setErrors(r.errors)
+      } else {
+        navigate ('/', {replace: true})
+      }
     })
 }
   const handleChangeToSignUp = (e) => {
