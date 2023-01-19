@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
-//import TestForm from './TestForm';
 import Cards from './CardsComponent';
 import Home from './Home';
 import Decks from './Decks';
@@ -14,8 +13,6 @@ import { useState, useEffect } from 'react';
 // .then(r => r.json())
 // .then(console.log)
 
-
-// const name = "Nick Phelps"
 
 const App = () => {
 
@@ -43,7 +40,6 @@ const App = () => {
   console.log("state of userToLogin",userToLogin)
 
   const handleOnChangeToUserLoginIn = (e) =>{
-    console.log(e)
     setUserToLogin( {...userToLogin , [e.target.name]: e.target.value } )
   }
 
@@ -80,27 +76,19 @@ const App = () => {
     <>
       <div className="App">Final Project
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
-        
-        
-        <button onClick={handleLogout}>LogOut?</button>
-        
-        
-        
         <NavBar/> 
             <Routes>
-              <Route path= "/" element={<div></div>}   />
+              <Route path= "/" element={<div></div>} />
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards/>}/>
               <Route path="/decks" element={<Decks/>}/>
-              <Route path="/signUp" element={<SignUp/>}/>
+              <Route path="/signup" element={<SignUp/>}/>
             </Routes>
+          
+            <br></br><br></br>
+            <br></br><br></br>
+          
           <h1>Welcome! Login?</h1>
-          
-          
-          
-          
-          
-          
           <form onSubmit={ handleLoginSubmit }>
           <input 
             onChange={ handleOnChangeToUserLoginIn }
@@ -122,6 +110,7 @@ const App = () => {
         <br></br><br></br>
         
         <h1>Or Sign-out?</h1>
+        <button onClick={handleLogout}>LogOut?</button>
           
       </div>
     </>

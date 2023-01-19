@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   
   
-  resources :decks
+  resources :decks, only: [:index, :show, :create, :delete]
   
   
   
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   
   
-  resources :users, only: [:index, :create, :show, :destroy, :update]
+  resources :users, only: [:index, :create, :show, :update]
     get "/users", to: "users#index"
     
     # get "/users/:id", to: "users#show"
