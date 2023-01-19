@@ -15,14 +15,14 @@ class UsersController < ApplicationController
     render json: user, status: :ok
   end
 
-  # def create
-  #   user = User.create(user_params)
-  #   if
-  #     render json: user, status: :created
-  #   else
-  #     render json: user.errors, status: :unprocessable_entity
-  #   end
-  # end
+  def create
+    user = User.create(user_params)
+    if
+      render json: user, status: :created
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
+  end
 
   # def update
   #   if user.update(user_params)

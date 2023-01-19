@@ -1,11 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import NavBar from './NavBar';
-import Cards from './CardsComponent';
-import Home from './Home';
-import Decks from './Decks';
-import SignUp from './SignUp';
 import { useState, useEffect } from 'react';
 
 
@@ -76,14 +71,6 @@ const App = () => {
     <>
       <div className="App">Final Project
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
-        <NavBar/> 
-            <Routes>
-              <Route path= "/" element={<div></div>} />
-              <Route path="/home" element={<Home/>}/>
-              <Route path="/cards" element={<Cards/>}/>
-              <Route path="/decks" element={<Decks/>}/>
-              <Route path="/signup" element={<SignUp/>}/>
-            </Routes>
           
             <br></br><br></br>
             <br></br><br></br>

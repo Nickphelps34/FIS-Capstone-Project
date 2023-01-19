@@ -11,9 +11,11 @@ const SignUp = () => {
     password: ""
   })
   const [errors, setErrors] = useState([])
-const navigate = useNavigate()
+  //const navigate = useNavigate()
 
 const { email, name, username, password} = signupFormData
+
+  //const [userToSignUp, setUserToSignUp] = useState
 
 const onFormSubmit = (e) => {
   e.preventDefault()
@@ -29,12 +31,15 @@ const onFormSubmit = (e) => {
     headers: { "Content-Type": 'application/json' },
     body: JSON.stringify(signupFormData)
   }).then(r => r.json())
-    .then(data => {
-      if (data.errors) {
-        setErrors(data.errors)
-      } else {
-        navigate ('/', {replace: true})
-      }
+    .then(r => {console.log(r)
+      
+      
+      
+      // if (r.errors) {
+      //   setErrors(r.errors)
+      // } else {
+      //   navigate ('/', {replace: true})
+      // }
     })
 }
   const handleChangeToSignUp = (e) => {
@@ -85,7 +90,7 @@ const onFormSubmit = (e) => {
           />
           <input type="submit" value="Sign Up!"/>
         </form>
-        
+
     </>
 
   )

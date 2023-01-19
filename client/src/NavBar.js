@@ -8,10 +8,10 @@ import { NavLink } from "react-router-dom"
     <div className="NavBar">
       <h1 className="nav-title"></h1>
         <div className="All-Nav-Links">
-          <NavLink activeclassname="Nav-Links" to="/">Main page</NavLink> 
-          <NavLink activeclassname="Nav-Links" to="/home">Home page</NavLink>
-          <NavLink activeclassname="Nav-Links" to="/cards"> Card page</NavLink>
-          <NavLink activeclassname="Nav-Links" to="/decks">Deck page</NavLink>
+          <NavLink classname="Nav-Links" to="/home">Home Page</NavLink>
+          <NavLink classname="Nav-Links" to="/cards"> Card Page</NavLink>
+          <NavLink classname="Nav-Links" to="/decks">Deck Page</NavLink>
+          <NavLink classname="Nav-Links" to="/signup">Sign Up!</NavLink>
         </div>
     </div>
   )}
