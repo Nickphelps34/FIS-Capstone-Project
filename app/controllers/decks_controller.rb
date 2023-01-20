@@ -11,6 +11,21 @@ class DecksController < ApplicationController
     else
       render json: {"error": "Deck not found"}, status: :not_found
     end
+
+    def create
+      deck = Deck.create(deck_params)
+      if
+        render json: deck, status: :created
+      else
+        render json: deck.errors, status: unprocessable_entity
+      end
+    end
+  
+  private
+  def deck_params
+    params.permit(:deck_name, :deck_color, :deck_commander)
+  end 
+  
   end
 
 

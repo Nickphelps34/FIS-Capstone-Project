@@ -18,8 +18,8 @@ import { useState, useEffect } from 'react';
 const App = () => {
 
   const [myCards, setMyCards] = useState([]) 
-  const location = useLocation
-  const navigate = useNavigate
+  const location = useLocation()
+  const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
   const toggleForm = () =>{
     setToggle(!toggle)
@@ -45,7 +45,7 @@ const App = () => {
       password: ""
     }
   )
-  console.log("state of userToLogin",userToLogin)
+  //console.log("state of userToLogin",userToLogin)
 
   const handleOnChangeToUserLoginIn = (e) =>{
     setUserToLogin( {...userToLogin , [e.target.name]: e.target.value } )
@@ -53,7 +53,7 @@ const App = () => {
 
   const handleLoginSubmit=(e)=> {e.preventDefault()
       
-    console.log('ByeBug!!')
+    //console.log('ByeBug!!')
 
     fetch ( "/login", 
       {
@@ -76,7 +76,7 @@ const App = () => {
       .then( deleteResponse => {
         setLoggedInUser( null )
       } )
-  
+      navigate('/', { replace: true })
     
   }
   useEffect(() => {
