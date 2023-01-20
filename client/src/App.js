@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import Cards from './CardsComponent';
@@ -9,6 +9,7 @@ import SignUp from './SignUp';
 import { useState, useEffect } from 'react';
 
 
+
 // fetch ("http://localhost:3000/")
 // .then(r => r.json())
 // .then(console.log)
@@ -16,7 +17,9 @@ import { useState, useEffect } from 'react';
 
 const App = () => {
 
-
+  const [myCards, setMyCards] = useState([]) 
+  const location = useLocation
+  const navigate = useNavigate
   const [toggle, setToggle] = useState(false)
   const toggleForm = () =>{
     setToggle(!toggle)
@@ -60,9 +63,9 @@ const App = () => {
   
   } )
   .then(r => r.json())
-  .then(hopefullyAUser => {console.log(hopefullyAUser)
+  .then(data => {console.log(data)
     
-  setLoggedInUser( hopefullyAUser )
+  setLoggedInUser( data )
   })
 }
 
@@ -74,9 +77,13 @@ const App = () => {
         setLoggedInUser( null )
       } )
   
+    
   }
-  
-
+  useEffect(() => {
+    fetch ("/cards")
+    .then(r=>r.json())
+    .then(data => setMyCards(data))
+  }, [])
   return(
     <>
       <div className="App">
@@ -85,7 +92,7 @@ const App = () => {
             <Routes>
               <Route path= "/" element={<div></div>} />
               <Route path="/home" element={<Home/>}/>
-              <Route path="/cards" element={<Cards/>}/>
+              <Route path="/cards" element={<Cards myCards={myCards}/>}/>
               <Route path="/decks" element={<Decks/>}/>
               <Route path="/signup" element={<SignUp/>}/>
             </Routes>
@@ -115,9 +122,7 @@ const App = () => {
         <br></br><br></br>
         <br></br><br></br>
         
-        {
-         loggedInUser ?  <h1> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>
-        } 
+        {loggedInUser ?  <h1> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>} 
       </div>
     </>
   );

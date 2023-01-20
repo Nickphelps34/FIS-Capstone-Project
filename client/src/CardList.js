@@ -1,9 +1,19 @@
 import React from "react";
 
-const CardList = () => {
+const CardList = ({myCards}) => {
 
+  //console.log(myCards)
   return(
-    <div>Hello There</div>
+    <>
+
+    <div>Card Name:  {myCards.card_name}</div>
+    <div>Card Type:  {myCards.card_type}</div>
+    <div>Mana Value:  {myCards.mana_value}</div>
+    <div>Card Color:  {myCards.card_color}</div>
+    
+
+
+    </>
   )
 
 }
