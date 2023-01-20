@@ -16,7 +16,7 @@ import { useState, useEffect } from 'react';
 
 
 const App = () => {
-
+  const [myDeck, setMyDeck] = useState([])
   const [myCards, setMyCards] = useState([]) 
   const location = useLocation()
   const navigate = useNavigate()
@@ -84,6 +84,13 @@ const App = () => {
     .then(r=>r.json())
     .then(data => setMyCards(data))
   }, [])
+
+  useEffect(() => {
+    fetch ("/decks")
+    .then(r=>r.json())
+    .then(data => setMyDeck(data))
+  }, [])
+  
   return(
     <>
       <div className="App">
@@ -93,7 +100,7 @@ const App = () => {
               <Route path= "/" element={<div></div>} />
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards myCards={myCards}/>}/>
-              <Route path="/decks" element={<Decks/>}/>
+              <Route path="/decks" element={<Decks myDeck={myDeck} />}/>
               <Route path="/signup" element={<SignUp/>}/>
             </Routes>
           
