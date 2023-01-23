@@ -10,28 +10,23 @@ import { useState, useEffect } from 'react';
 
 
 
-// fetch ("http://localhost:3000/")
-// .then(r => r.json())
-// .then(console.log)
 
-
-const App = () => {
-  const [myDeck, setMyDeck] = useState([])
-  const [myCards, setMyCards] = useState([]) 
-  const location = useLocation()
-  const navigate = useNavigate()
-  const [toggle, setToggle] = useState(false)
-  const toggleForm = () =>{setToggle(!toggle)}
-  const [loggedInUser, setLoggedInUser] = useState( null )
+  const App = () => {
+    const [myDeck, setMyDeck] = useState([])
+    const [myCards, setMyCards] = useState([]) 
+    const location = useLocation()
+    const navigate = useNavigate()
+    const [toggle, setToggle] = useState(false)
+    const toggleForm = () =>{setToggle(!toggle)}
+    const [loggedInUser, setLoggedInUser] = useState( null )
   //console.log("State of loggedInUser", loggedInUser)
 
-  useEffect(
-    ()=>{
+  useEffect(()=>{
       fetch( "/userInSession" )
       .then( r => r.json() )
       .then( userAlreadyLoggedIn =>  
         setLoggedInUser(userAlreadyLoggedIn) )
-      }, [] )
+  }, [] )
   
   
   const [userToLogin, setUserToLogin] =useState(

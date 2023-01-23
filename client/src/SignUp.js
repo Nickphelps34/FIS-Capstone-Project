@@ -47,23 +47,7 @@ const SignUp = ({loggedInUser}) => {
     const { name, value } = e.target
     setSignupFormData({ ...signupFormData, [name]: value})
   }
-
-
-
-  // const onUpdateSubmit = (e) => {
-  //   e.preventDefault()
-  //   const user = {
-  //     username,
-  //     name
-  //   }
-  // fetch(`/users/${loggedInUserId}` ,{
-  //   method: "PATCH",
-  //   headers: { "Content-Type": 'application/json' },
-  //   body: JSON.stringify(user)
-  // }).then(r => r.json())
-  //   .then( r => console.log(r))
-
-    return (
+  return (
     <>
       <Link to="/home" className="btn">Home</Link>
       <div>Sign up Here!</div>

@@ -36,8 +36,12 @@ class UsersController < ApplicationController
 
   def update 
     user = User.find(params[:id])
-    user.update(user_params)
-    render json: user, status: :accepted
+    if user.update(user_params)
+      render json: user, status: :accepted
+    else
+      render json: {error: "this doesn't work"}, status: :unprocessable_entity
+    end
+
   end
 
   # def destroy
