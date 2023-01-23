@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2023_01_12_215014) do
     t.integer "mana_value"
     t.string "card_color"
     t.string "card_name"
+    t.boolean "commander"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -5,6 +5,7 @@ class CreateCards < ActiveRecord::Migration[6.1]
       t.integer :mana_value
       t.string :card_color
       t.string :card_name
+      t.boolean :commander
 
       t.timestamps
     end
