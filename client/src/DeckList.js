@@ -1,7 +1,7 @@
 import React from "react";
 
 const DeckList = ({myDeck}) => {
-  //console.log(myDeck.deck_commander)
+  console.log(myDeck)
   return(
 
     <div>

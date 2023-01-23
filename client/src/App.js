@@ -21,22 +21,17 @@ const App = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
-  const toggleForm = () =>{
-    setToggle(!toggle)
-  }
+  const toggleForm = () =>{setToggle(!toggle)}
   const [loggedInUser, setLoggedInUser] = useState( null )
   //console.log("State of loggedInUser", loggedInUser)
 
   useEffect(
     ()=>{
-
       fetch( "/userInSession" )
       .then( r => r.json() )
       .then( userAlreadyLoggedIn =>  
         setLoggedInUser(userAlreadyLoggedIn) )
-      }, 
-    []
-    )
+      }, [] )
   
   
   const [userToLogin, setUserToLogin] =useState(
@@ -52,35 +47,25 @@ const App = () => {
   }
 
   const handleLoginSubmit=(e)=> {e.preventDefault()
-      
-    //console.log('ByeBug!!')
-
-    fetch ( "/login", 
-      {
+    fetch ( "/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify( userToLogin )
-  
-  } )
-  .then(r => r.json())
-  .then(data => {console.log(data)
-    
-  setLoggedInUser( data )
-  })
-}
+        body: JSON.stringify( userToLogin )} )
+    .then(r => r.json())
+    .then(data => {console.log(data)
+    setLoggedInUser( data )
+    })}
 
   const handleLogout = () => {
-    
-    fetch ("/logout", {method: "DELETE"} )
-      .then(r=>r.json())
-      .then( deleteResponse => {
-        setLoggedInUser( null )
+    fetch ("/logout", {
+        method: "DELETE"} )
+    .then(r=>r.json())
+    .then( deleteResponse => {
+      setLoggedInUser( null )
       } )
-      navigate('/', { replace: true })
-    
-  }
-  useEffect(() => {
-    fetch ("/cards")
+      navigate('/', { replace: true })}
+  
+    useEffect(() => { fetch ("/cards")
     .then(r=>r.json())
     .then(data => setMyCards(data))
   }, [])
@@ -101,7 +86,7 @@ const App = () => {
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards myCards={myCards}/>}/>
               <Route path="/decks" element={<Decks myDeck={myDeck} />}/>
-              <Route path="/signup" element={<SignUp/>}/>
+              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}/>}/>
             </Routes>
           
             <br></br><br></br>

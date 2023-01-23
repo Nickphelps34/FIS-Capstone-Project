@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import UpdateUser from "./UpdateUser";
 
 
-const SignUp = () => {
+
+
+const SignUp = ({loggedInUser}) => {
   const [signupFormData, setSignupFormData] = useState({
     email: "" ,
     name: "" ,
@@ -12,19 +15,19 @@ const SignUp = () => {
   })
   const [errors, setErrors] = useState([])
   const navigate = useNavigate()
+  //const [username, setUsername] = useState("")
+  //const loggedInUserId = loggedInUser.id 
+  const { email, name, username, password} = signupFormData
 
-const { email, name, username, password} = signupFormData
+  const onFormSubmit = (e) => {
+    e.preventDefault()
+    const user = {
+      username,
+      name,
+      email,
+      password
+    }
 
-  //const [userToSignUp, setUserToSignUp] = useState
-
-const onFormSubmit = (e) => {
-  e.preventDefault()
-  const user = {
-    username,
-    name,
-    email,
-    password
-  }
 
   fetch('/users', {
     method: 'POST',
@@ -38,7 +41,7 @@ const onFormSubmit = (e) => {
         navigate ('/', {replace: true})
       }
     })
-}
+  }
   const handleChangeToSignUp = (e) => {
     console.log(e)
     const { name, value } = e.target
@@ -46,8 +49,21 @@ const onFormSubmit = (e) => {
   }
 
 
-  return (
 
+  // const onUpdateSubmit = (e) => {
+  //   e.preventDefault()
+  //   const user = {
+  //     username,
+  //     name
+  //   }
+  // fetch(`/users/${loggedInUserId}` ,{
+  //   method: "PATCH",
+  //   headers: { "Content-Type": 'application/json' },
+  //   body: JSON.stringify(user)
+  // }).then(r => r.json())
+  //   .then( r => console.log(r))
+
+    return (
     <>
       <Link to="/home" className="btn">Home</Link>
       <div>Sign up Here!</div>
@@ -86,7 +102,12 @@ const onFormSubmit = (e) => {
             value={password}
           />
           <input type="submit" value="Sign Up!"/>
+          
         </form>
+        <br></br><br></br>
+        <br></br><br></br>
+        <UpdateUser loggedInUser={loggedInUser}/>
+          {/* <input type="text" name={username} onChange={(e) => {setUsername(e.target.value)}}>Update </input> */}
 
     </>
 
