@@ -8,9 +8,6 @@ import Decks from './Decks';
 import SignUp from './SignUp';
 import { useState, useEffect } from 'react';
 
-
-
-
   const App = () => {
     const [myDeck, setMyDeck] = useState([])
     const [myCards, setMyCards] = useState([]) 
@@ -19,7 +16,6 @@ import { useState, useEffect } from 'react';
     const [toggle, setToggle] = useState(false)
     const toggleForm = () =>{setToggle(!toggle)}
     const [loggedInUser, setLoggedInUser] = useState( null )
-  //console.log("State of loggedInUser", loggedInUser)
 
   useEffect(()=>{
       fetch( "/userInSession" )
@@ -28,15 +24,12 @@ import { useState, useEffect } from 'react';
         setLoggedInUser(userAlreadyLoggedIn) )
   }, [] )
   
-  
   const [userToLogin, setUserToLogin] =useState(
     {
       username: "",
       password: ""
     }
   )
-  //console.log("state of userToLogin",userToLogin)
-
   const handleOnChangeToUserLoginIn = (e) =>{
     setUserToLogin( {...userToLogin , [e.target.name]: e.target.value } )
   }
@@ -64,11 +57,11 @@ import { useState, useEffect } from 'react';
     .then(r=>r.json())
     .then(data => setMyCards(data))
   }, [])
-
+  console.log(loggedInUser)
   useEffect(() => {
     fetch ("/decks")
     .then(r=>r.json())
-    .then(data => setMyDeck(data))
+    .then(data => setMyDeck(...data))
   }, [])
   
   return(
@@ -80,12 +73,13 @@ import { useState, useEffect } from 'react';
               <Route path= "/" element={<div></div>} />
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards myCards={myCards}/>}/>
-              <Route path="/decks" element={<Decks myDeck={myDeck} />}/>
+              <Route path="/decks" > 
+                <Route index element={<Decks decks={loggedInUser ? loggedInUser.decks : []} />}/>
+                <Route path=":id" element={<h1>show Page</h1>}/>
+              </Route>
               <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}/>}/>
             </Routes>
           
-            <br></br><br></br>
-            <br></br><br></br>
           
           { !loggedInUser ?
             <h1>Welcome! Login?</h1> : <></>}
@@ -106,8 +100,6 @@ import { useState, useEffect } from 'react';
         </form>
           : <></>}
         
-        <br></br><br></br>
-        <br></br><br></br>
         
         {loggedInUser ?  <h1> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>} 
       </div>
