@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :username, :email, :password)
+    params.require(:user).permit(:name, :username, :email, :password, :id, :user)
   end
 
   def find_user

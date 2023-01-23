@@ -2,12 +2,15 @@ import { useState } from "react";
 import React from "react";
 
   const UpdateUser = ({loggedInUser}) => {
+    console.log(loggedInUser)
     const [updatedFormData, setUpdateFormData] = useState({
       name: "" ,
-      username: "" ,
   })
+    const [currentUser, setCurrentUser] = useState(null)
     const { name, username} = updatedFormData
-
+    const [newUserName, setNewUserName] = useState("")
+    //const [NewUsername, setNewUsername] = useState{""}
+    const [updateUserInfo, setUpdateUserInfo] = useState()
 
   const updateUser = (loggedInUser) => {
     let item = (username,name) 
@@ -24,9 +27,14 @@ import React from "react";
     method: "PATCH",
     headers: { "Content-Type": 'application/json' },
     body: JSON.stringify(updatedFormData)
-  }).then(r => r.json())
-    .then( r => console.log(r))
-  }
+  }).then( r => r.json())
+    .then( updateUserInfo => {
+      console.log(updateUserInfo)
+      setCurrentUser( {...currentUser, name:newUserName})
+    }
+    
+    
+    )}
   const handleChangeToUpdate = (e) => {
     console.log(e)
     const { name, value } = e.target
@@ -39,20 +47,20 @@ import React from "react";
 
     <div>
         <label>Name</label>
-        <form>
+        <form onSubmit={onUpdateSubmit}>
           <input
             type="text"
             onChange={ handleChangeToUpdate }
             name="name"
             value={name}
           />
-          <label>Username</label>
+          {/* <label>Username</label>
           <input 
             type="text"
             onChange={handleChangeToUpdate}
             name="username"
             value={username}
-          />
+          /> */}
           <input type ="submit" button={updateUser} value="Update!"/>
           
         </form>
