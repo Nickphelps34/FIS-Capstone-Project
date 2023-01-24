@@ -43,7 +43,8 @@ import DeckInfo from './DeckInfo';
     .then(r => r.json())
     .then(data => {console.log(data)
     setLoggedInUser( data )
-    })}
+    })
+    navigate('/home', { replace: true})}
 
   const handleLogout = () => {
     fetch ("/logout", {

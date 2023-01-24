@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import Decks from "./Decks";
 
 
-
-
 const DeckInfo = ({myCards}) => {
 
   const [usersDeck, setUsersDeck] = useState({cards: []})
@@ -14,15 +12,11 @@ const DeckInfo = ({myCards}) => {
   const renderCardLi = (myCard) => {
     return (
       <>
-      <li key="uniqueId"> {myCard.card_name} : {myCard.card_type}
-      <button onClick={ () => {handleAddButton(myCard)} }  >Add Card</button>
+      <li key="uniqueId1"> {myCard.card_name} : {myCard.card_type}
+      <button key="uniqueId2" onClick={ () => {handleAddButton(myCard)} }  >Add Card</button>
       </li>
       </>
     )
-  }
-
-  const handleOnChangeForCards = (e) =>{
-    setCardsToAdd( {...cardsToAdd , [e.target.card]: e.target.value } )
   }
   const handleAddButton = (cardObj) => {
     console.log("card id", cardObj.id)
@@ -30,11 +24,15 @@ const DeckInfo = ({myCards}) => {
     fetch (`/collections`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cardsToAdd)} )
+      body: JSON.stringify({
+        card_id: cardObj.id,
+        deck_id: id
+      })
+    } )
     .then(r => {
       if (r.ok) {
-        r.json().then(goodData => {
-          console.log(goodData)
+        r.json().then(card => {
+          setUsersDeck( {...usersDeck, cards: [...usersDeck.cards, card] } )
         })
       } else { 
         r.json().then(badData => {
@@ -45,33 +43,17 @@ const DeckInfo = ({myCards}) => {
     })
   }
   
-
-
-  // const handleOnChangeToUserLoginIn = (e) =>{
-  //   setUserToLogin( {...userToLogin , [e.target.name]: e.target.value } )
-  // }
-
-  // const handleLoginSubmit=(e)=> {e.preventDefault()
-  //   fetch ( "/login", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify( userToLogin )} )
-  //   .then(r => r.json())
-  //   .then(data => {console.log(data)
-  //   setLoggedInUser( data )
-  //   })}
-
-
+  //console.log(usersDeck)
+  
   useEffect(() => {fetch(`/decks/${id}`)
-  .then( r => r.json())
-  .then( r => setUsersDeck(r))}, [])
-    //console.log(usersDeck)
+    .then( r => r.json())
+    .then( r => setUsersDeck(r))}, [])
+    console.log(usersDeck)
     
 
   useEffect(() => {fetch('/cards')
     .then( r => r.json())
     .then( r => setCardsToAdd(r))}, [])
-    //console.log(cardsToAdd)
   
   
 
@@ -79,7 +61,7 @@ const DeckInfo = ({myCards}) => {
 
     <div>
       <div>
-        <ul>Cards inside of the deck
+        <ul key="uniqueKey3">Cards inside of the deck
             {usersDeck.cards.map( ( cardObj )=> { 
               return (
                 <li>{cardObj.card_name}</li>
@@ -92,7 +74,7 @@ const DeckInfo = ({myCards}) => {
       <h1>Commander: {usersDeck.deck_commander}</h1>
       <h1>Color: {usersDeck.deck_color}</h1>
 
-      <menu>{myCards.map(renderCardLi ) }</menu>
+      <menu key="uniqueKey2">{myCards.map(renderCardLi ) }</menu>
 
     </div>
   )
