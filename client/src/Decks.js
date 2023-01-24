@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DeckList from "./DeckList";
 
 const Decks = ({decks}) => {
-  console.log(decks)
+  //console.log(decks)
   return (
     <>
       <h1>Deck Component</h1>

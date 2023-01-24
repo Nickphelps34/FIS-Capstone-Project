@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 
     return (
       <div>
-        <h1>Home Component</h1>
+        <h1>Hello! Thank you for viewing my Capstone Project for FIS, I've built a MTG card/deck tracking App. </h1>
         
       </div>
     )

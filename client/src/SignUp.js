@@ -33,13 +33,13 @@ const SignUp = ({loggedInUser}) => {
     method: 'POST',
     headers: { "Content-Type": 'application/json' },
     body: JSON.stringify(signupFormData)
-  }).then(r => r.json())
-    .then(r => {
-      if (r.errors) {
-        setErrors(r.errors)
-      } else {
-        navigate ('/', {replace: true})
-      }
+    }).then(r => r.json())
+      .then(r => {
+        if (r.errors) {
+          setErrors(r.errors)
+        } else {
+          navigate ('/', {replace: true})
+        }
     })
   }
   const handleChangeToSignUp = (e) => {
@@ -51,10 +51,6 @@ const SignUp = ({loggedInUser}) => {
     <>
       <Link to="/home" className="btn">Home</Link>
       <div>Sign up Here!</div>
-      
-        
-            <br></br><br></br>
-            <br></br><br></br>
         
         <label>Name</label>
         <form onSubmit={onFormSubmit}>
@@ -88,9 +84,7 @@ const SignUp = ({loggedInUser}) => {
           <input type="submit" value="Sign Up!"/>
           
         </form>
-        <br></br><br></br>
-        <br></br><br></br>
-        <UpdateUser loggedInUser={loggedInUser}/>
+      <UpdateUser loggedInUser={loggedInUser}/>
           {/* <input type="text" name={username} onChange={(e) => {setUsername(e.target.value)}}>Update </input> */}
 
     </>

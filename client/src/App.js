@@ -7,6 +7,7 @@ import Home from './Home';
 import Decks from './Decks';
 import SignUp from './SignUp';
 import { useState, useEffect } from 'react';
+import DeckInfo from './DeckInfo';
 
   const App = () => {
     const [myDeck, setMyDeck] = useState([])
@@ -57,7 +58,7 @@ import { useState, useEffect } from 'react';
     .then(r=>r.json())
     .then(data => setMyCards(data))
   }, [])
-  console.log(loggedInUser)
+    console.log(loggedInUser)
   useEffect(() => {
     fetch ("/decks")
     .then(r=>r.json())
@@ -66,7 +67,7 @@ import { useState, useEffect } from 'react';
   
   return(
     <>
-      <div className="App">
+      <div className="App" >
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
         <NavBar/> 
             <Routes>
@@ -75,29 +76,26 @@ import { useState, useEffect } from 'react';
               <Route path="/cards" element={<Cards myCards={myCards}/>}/>
               <Route path="/decks" > 
                 <Route index element={<Decks decks={loggedInUser ? loggedInUser.decks : []} />}/>
-                <Route path=":id" element={<h1>show Page</h1>}/>
+                <Route path=":id" element={<DeckInfo myCards={myCards}/>}/>
               </Route>
               <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}/>}/>
             </Routes>
-          
-          
           { !loggedInUser ?
             <h1>Welcome! Login?</h1> : <></>}
           { !loggedInUser ?
           <form onSubmit={ handleLoginSubmit }>
-          <input 
-            onChange={ handleOnChangeToUserLoginIn }
-            name="username"
-          />
-          
-          <input 
-            onChange={ handleOnChangeToUserLoginIn } 
-            type="password"
-            name="password"
+            <input 
+              onChange={ handleOnChangeToUserLoginIn }
+              name="username"
             />
-          <button type="submit" >submit</button>
-
-        </form>
+          
+            <input 
+              onChange={ handleOnChangeToUserLoginIn } 
+              type="password"
+              name="password"
+            />
+            <button type="submit" >submit</button>
+          </form>
           : <></>}
         
         
