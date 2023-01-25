@@ -4,7 +4,7 @@ import React from "react";
 
     return (
       <div>
-        <h1>Hello! Thank you for viewing my Capstone Project for FIS, I've built a MTG card/deck tracking App. </h1>
+        <h1 className="Welcome-message">Hello! Thank you for viewing my Capstone Project: Commander Collection for FIS, I've built a MTG card/deck tracking App. </h1>
         
       </div>
     )

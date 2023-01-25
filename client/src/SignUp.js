@@ -44,12 +44,14 @@ const SignUp = ({loggedInUser,  setLoggedInUser}) => {
   }
   return (
     <>
-      <Link to="/home" className="btn">Home</Link>
+      <Link to="/home" className="home-btn">Home</Link>
       <div>Sign up Here!</div>
         
         <label>Name</label>
-        <form onSubmit={onFormSubmit}>
+        <form className="Submit-form" 
+              onSubmit={onFormSubmit}>
           <input
+            className="Submit-form-name"
             type="text"
             onChange={ handleChangeToSignUp }
             name="name"
@@ -57,6 +59,7 @@ const SignUp = ({loggedInUser,  setLoggedInUser}) => {
           />
           <label>Username</label>
           <input 
+            className="Submit-form-username"
             type="text"
             onChange={handleChangeToSignUp}
             name="username"
@@ -64,6 +67,7 @@ const SignUp = ({loggedInUser,  setLoggedInUser}) => {
           />
           <label>Email</label>
           <input 
+            className="Submit-form-email"
             type="text"
             name="email"
             onChange={handleChangeToSignUp}
@@ -71,6 +75,7 @@ const SignUp = ({loggedInUser,  setLoggedInUser}) => {
           />
           <label>Password</label>
           <input
+            className="Submit-form-password"
             type="text"
             name="password"
             onChange={handleChangeToSignUp}

@@ -15,8 +15,6 @@ import DeckInfo from './DeckInfo';
     const [loggedInUser, setLoggedInUser] = useState( null )
     const [userToLogin, setUserToLogin] =useState(
       {username: "", password: ""})
-      console.log("This is weird", userToLogin)
-      console.log("what is going on",loggedInUser)
   useEffect(()=>{
       fetch( "/userInSession" )
       .then( r => r.json() )
@@ -62,7 +60,6 @@ import DeckInfo from './DeckInfo';
     .then(r=>r.json())
     .then(data => setMyCards(data))
   }, [])
-    console.log("User?", loggedInUser)
   
   return(
     <>
@@ -70,6 +67,7 @@ import DeckInfo from './DeckInfo';
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
         <NavBar/> 
             <Routes>
+            <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser}/>}/>
               <Route path= "/" element={<div></div>} />
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards myCards={myCards}/>}/>
@@ -77,12 +75,12 @@ import DeckInfo from './DeckInfo';
                 <Route index element={<Decks decks={loggedInUser ? loggedInUser.decks : []} />}/>
                 <Route path=":id" element={<DeckInfo myCards={myCards}/>}/>
               </Route>
-              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser}/>}/>
+              
             </Routes>
           { !loggedInUser ?
             <h1>Welcome! Login?</h1> : <></>}
           { !loggedInUser ?
-          <form onSubmit={ handleLoginSubmit }>
+          <form className='Login-Submit-Form' onSubmit={ handleLoginSubmit }>
             <input 
               onChange={ handleOnChangeToUserLoginIn }
               name="username"
