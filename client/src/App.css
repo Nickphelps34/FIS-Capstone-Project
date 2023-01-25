@@ -27,11 +27,33 @@
   justify-content: space-between;
   display: top
 }
-.All-Nav-Links{
-  color: green;
+.Nav-Links-Home{
+  color: rgb(0, 0, 0);
   text-align: right;
   list-style-type: none;
   display: inline-block;
+  padding: 2rem;
+}
+.Nav-Links-Cards{
+  color: rgb(0, 0, 0);
+  text-align: right;
+  list-style-type: none;
+  display: inline-block;
+  padding: 2rem;
+}
+.Nav-Links-Decks{
+  color: rgb(0, 0, 0);
+  text-align: right;
+  list-style-type: none;
+  display: inline-block;
+  padding: 2rem;
+}
+.Nav-Links-Signup{
+  color: rgb(0, 0, 0);
+  text-align: right;
+  list-style-type: none;
+  display: inline-block;
+  padding: 2rem;
 }
 .home-btn{
   color:#271800;
@@ -39,10 +61,10 @@
   text-align: center;
   height: 100px;
   width: 100px;
-  position: center;
+  position: fixed;
   display: block;
-  top: 0px;
-  right: 0px
+  top: 65px;
+  right: 25px
 }
 .Cards-card{
   display: inline-block;
@@ -70,7 +92,7 @@
   color: #1ba411;
 }
 .Login-Submit-button {
-  background: #cc1010;
+  background: #d406eb;
   background-image: -webkit-linear-gradient(top, #cc1010, #b82b2f);
   background-image: -moz-linear-gradient(top, #cc1010, #b82b2f);
   background-image: -ms-linear-gradient(top, #cc1010, #b82b2f);
@@ -85,11 +107,20 @@
   padding: 4px 4px 4px 4px;
   text-decoration: none; 
 }
-.Login-Form{
-
+.Login-Submit-button:hover {
+  background: #e09107;
+  background-image: -webkit-linear-gradient(top, #e09107, #e09107);
+  background-image: -moz-linear-gradient(top, #e09107, #e09107);
+  background-image: -ms-linear-gradient(top, #e09107, #e09107);
+  background-image: -o-linear-gradient(top, #e09107, #e09107);
+  background-image: linear-gradient(to bottom, #e09107, #e09107);
+  text-decoration: none;
 }
-.fieldset {
-  color:#271800;
+/* .Login-Form{
+
+} */
+.login-fieldset {
+  color:#000000;
   margin: 2em 0;
   padding: 1em 2em;
   border: solid 1px;
@@ -97,7 +128,117 @@
   min-width: 200p;
 }
 .login-legend {
-  font-size: 1.25em;
+  font-size: 1.75em;
   padding: 0 .25em;
   color: black
+}
+.update-fieldset {
+  color:#000000;
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px;
+  border-radius: 6px;
+  min-width: 200p;
+}
+.update-legend {
+  font-size: 1.75em;
+  padding: 0 .25em;
+  color: black
+}
+.signup-fieldset {
+  color:#000000;
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px;
+  border-radius: 6px;
+  min-width: 200p;
+}
+.signup-legend {
+  font-size: 1.75em;
+  padding: 0 .25em;
+  color: black
+}
+.card-fieldset {
+  color:#000000;
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px;
+  border-radius: 6px;
+  min-width: 200p;
+}
+.card-legend {
+  font-size: 1.75em;
+  padding: 0 .25em;
+  color: black
+}
+.logout-btn {
+  background: #cc1010;
+  background-image: -webkit-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -moz-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -ms-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -o-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: linear-gradient(to bottom, #cc1010, #b82b2f);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 21px;
+  padding: 6px 6px 6px 6px;
+  border: solid #000000 2px;
+  text-decoration: none;
+  position:fixed;
+  right: 30px;
+  top: 20px;
+}
+
+.logout-btn:hover {
+  background: #e09107;
+  background-image: -webkit-linear-gradient(top, #e09107, #e09107);
+  background-image: -moz-linear-gradient(top, #e09107, #e09107);
+  background-image: -ms-linear-gradient(top, #e09107, #e09107);
+  background-image: -o-linear-gradient(top, #e09107, #e09107);
+  background-image: linear-gradient(to bottom, #e09107, #e09107);
+  text-decoration: none;
+}
+.new-card-btn {
+  background: #cc1010;
+  background-image: -webkit-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -moz-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -ms-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -o-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: linear-gradient(to bottom, #cc1010, #b82b2f);
+  -webkit-border-radius: 24;
+  -moz-border-radius: 24;
+  border-radius: 24px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 21px;
+  padding: .5px .5px .5px .5px;
+  border: solid #000000 2px;
+  text-decoration: none;
+  left: 100px
+}
+
+.new-card-btn:hover {
+  background: #e09107;
+  background-image: -webkit-linear-gradient(top, #e09107, #e09107);
+  background-image: -moz-linear-gradient(top, #e09107, #e09107);
+  background-image: -ms-linear-gradient(top, #e09107, #e09107);
+  background-image: -o-linear-gradient(top, #e09107, #e09107);
+  background-image: linear-gradient(to bottom, #e09107, #e09107);
+  text-decoration: none;
+}
+.card-type {
+  padding: 60px
+}
+.card-name {
+  padding: 60px
+}
+.card-color {
+  padding: 60px
+}
+.mana-value {
+  padding: 60px;
+  right: 50px
 }

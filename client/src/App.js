@@ -78,10 +78,10 @@ import DeckInfo from './DeckInfo';
               
             </Routes>
           { !loggedInUser ?
-            <h1 className='Log-in-Message'>Welcome! Login?</h1> : <></>}
+            <h1 className='Log-in-Message'>Welcome to Commander Collection!</h1> : <></>}
           { !loggedInUser ?
-          <fieldset>
-            <legend className='login-legend'>Login</legend>
+          <fieldset className='login-fieldset'>
+            <legend className='login-legend'>Login?</legend>
               <form className='Login-Form' onSubmit={ handleLoginSubmit }>
                 <label for="username">Username:</label>
                 <input 
@@ -100,7 +100,7 @@ import DeckInfo from './DeckInfo';
           : <></>}
         
         
-        {loggedInUser ?  <h1 className="Logout"> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>} 
+        {loggedInUser ?  <h1 className="Logout"><button onClick={handleLogout} className="logout-btn">Logout</button></h1> : <></>} 
       </div>
     </>
   );

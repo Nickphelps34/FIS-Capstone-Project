@@ -24,8 +24,8 @@ const UpdateUser = ({loggedInUser}) => {
 
   return (
       <div>
-        <fieldset className="Update-Fieldset">
-        <legend>Wanna change your name?</legend>
+        <fieldset className="update-fieldset">
+        <legend className="update-legend">Wanna change your name?</legend>
           <label>Name</label>
             <form onSubmit={onUpdateSubmit}>
               <input

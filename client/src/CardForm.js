@@ -28,13 +28,20 @@ const CardForm = ({myCards}) => {
 
   return (
   <>
-    <form className="new-card-form" onSubmit={handNewCardForm}>
-      <input placeholder="card name" value={newCardName} onChange={(e)=>setNewCardName(e.target.value)}></input>
-      <input placeholder="card type" value={newCardType} onChange={(e)=>setNewCardType(e.target.value)}></input>
-      <input placeholder="mana value" value={newCardManaValue} onChange={(e)=>setNewCardManaValue(e.target.value)}></input>
-      <input placeholder="card color" value={newCardColor} onChange={(e)=>setNewCardColor(e.target.value)}></input>
-      <input type="submit"/>
-    </form>
+    <fieldset className="card-fieldset">
+      <legend className="card-legend">Add a Card?</legend>
+        <form className="new-card-form" onSubmit={handNewCardForm}>
+          <label className="card-name">Card Name:</label>
+            <input value={newCardName} onChange={(e)=>setNewCardName(e.target.value)}></input>
+          <label className="card-type">Card Type:</label>
+            <input value={newCardType} onChange={(e)=>setNewCardType(e.target.value)}></input>
+          <label className="mana-value">Mana Value</label>
+            <input value={newCardManaValue} onChange={(e)=>setNewCardManaValue(e.target.value)}></input>
+          <label className="card-color">Card Color</label>
+            <input value={newCardColor} onChange={(e)=>setNewCardColor(e.target.value)}></input>
+          <input type="submit" className="new-card-btn"/>
+        </form>
+    </fieldset>    
   </>
 )}
 

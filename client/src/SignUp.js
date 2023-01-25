@@ -46,8 +46,8 @@ const SignUp = ({loggedInUser,  setLoggedInUser}) => {
     <>
       <Link to="/home" className="home-btn">Home</Link>
       <div></div>
-        <fieldset>
-          <legend>Sign Up!</legend>
+        <fieldset className="signup-fieldset">
+          <legend className="signup-legend">Sign Up!</legend>
             <form className="Submit-form" onSubmit={onFormSubmit}>
             <label>Name</label>
               <input

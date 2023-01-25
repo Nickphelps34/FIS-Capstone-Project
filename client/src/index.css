@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background: rgb(2,0,36);
-  background: linear-gradient(17deg, rgba(2,0,36,1) 0%, rgba(9,121,36,0.7553615196078431) 35%, rgba(0,212,255,1) 100%);
+  background: rgb(12,235,36);
+  background: linear-gradient(286deg, rgba(12,235,36,1) 0%, rgba(13,217,202,0.7553615196078431) 35%, rgba(12,235,36,1) 100%);
   height: 800px
 }
 
