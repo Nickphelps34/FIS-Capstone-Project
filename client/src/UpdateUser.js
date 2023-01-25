@@ -6,10 +6,7 @@ const UpdateUser = ({loggedInUser}) => {
       name: "" ,
     })
     const [currentUser, setCurrentUser] = useState()
-    const [updateUserInfo, setUpdateUserInfo] = useState()
-  
   const onUpdateSubmit = (e) => {
-    e.preventDefault()
     fetch(`/users/${loggedInUser.id}` ,{
         method: "PATCH",
         headers: { "Content-Type": 'application/json' },
@@ -33,7 +30,6 @@ const UpdateUser = ({loggedInUser}) => {
             type="text"
             onChange={ handleChangeToUpdate }
             name="name"
-            value={updateUserInfo}
           />
           <input type ="submit" value="Update!"/>
         </form>

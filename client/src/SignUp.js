@@ -6,14 +6,14 @@ import UpdateUser from "./UpdateUser";
 
 
 
-const SignUp = ({loggedInUser}) => {
+const SignUp = ({loggedInUser,  setUserToLogin}) => {
   const [signupFormData, setSignupFormData] = useState({
     email: "" ,
     name: "" ,
     username: "" ,
     password: ""
   })
-  const [errors, setErrors] = useState([])
+  // const [errors, setErrors] = useState([])
   const navigate = useNavigate()
   //const [username, setUsername] = useState("")
   //const loggedInUserId = loggedInUser.id 
@@ -21,29 +21,38 @@ const SignUp = ({loggedInUser}) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault()
-    const user = {
-      username,
-      name,
-      email,
-      password
-    }
+    fetch('/users', {
+      method: 'POST',
+      headers: { "Content-Type": 'application/json' },
+      body: JSON.stringify(signupFormData)
+    }).then(r =>  {
+        if (r.ok) {
+          r.json().then((user) => {
+            console.log("did a user come back?", user)
+            setUserToLogin(user)
+            navigate ('/home')
 
-
-  fetch('/users', {
-    method: 'POST',
-    headers: { "Content-Type": 'application/json' },
-    body: JSON.stringify(signupFormData)
-    }).then(r => r.json())
-      .then(r => {
-        if (r.errors) {
-          setErrors(r.errors)
+          })
         } else {
-          navigate ('/', {replace: true})
+          r.json().then(badData => {
+            console.warn(badData)
+          })
         }
-    })
+      } )
+    
+    
+    
+    
+    //   .then(r => {
+    //     if (r.errors) {
+    //       setErrors(r.errors)
+    //     } else {
+    //       navigate ('/', {replace: true})
+    //     }
+    // })
   }
   const handleChangeToSignUp = (e) => {
-    console.log(e)
+    //console.log(e)
     const { name, value } = e.target
     setSignupFormData({ ...signupFormData, [name]: value})
   }

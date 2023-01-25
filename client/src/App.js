@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import NavBar from './NavBar';
 import Cards from './CardsComponent';
@@ -10,12 +10,12 @@ import { useState, useEffect } from 'react';
 import DeckInfo from './DeckInfo';
 
   const App = () => {
-    const [myDeck, setMyDeck] = useState([])
+    // const [myDeck, setMyDeck] = useState([])
     const [myCards, setMyCards] = useState([]) 
-    const location = useLocation()
+    // const location = useLocation()
     const navigate = useNavigate()
-    const [toggle, setToggle] = useState(false)
-    const toggleForm = () =>{setToggle(!toggle)}
+    // const [toggle, setToggle] = useState(false)
+    // const toggleForm = () =>{setToggle(!toggle)}
     const [loggedInUser, setLoggedInUser] = useState( null )
 
   useEffect(()=>{
@@ -35,16 +35,33 @@ import DeckInfo from './DeckInfo';
     setUserToLogin( {...userToLogin , [e.target.name]: e.target.value } )
   }
 
-  const handleLoginSubmit=(e)=> {e.preventDefault()
+  const handleLoginSubmit=(e)=> {
+    e.preventDefault()
     fetch ( "/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify( userToLogin )} )
-    .then(r => r.json())
-    .then(data => {console.log(data)
-    setLoggedInUser( data )
-    })
-    navigate('/home', { replace: true})}
+    .then(r => {
+      if (r.ok) {
+        r.json().then( (user) => {
+          setUserToLogin(user )
+          navigate('/home')
+        }  )
+      } else {
+        r.json().then(badData => {
+          console.warn(badData)
+        })
+      }
+    }) 
+  }
+   
+   
+   
+   
+    // .then(data => {console.log(data)
+    // setLoggedInUser( data )
+    // })
+    // navigate('/home', { replace: true})}
 
   const handleLogout = () => {
     fetch ("/logout", {
@@ -52,19 +69,21 @@ import DeckInfo from './DeckInfo';
     .then(r=>r.json())
     .then( deleteResponse => {
       setLoggedInUser( null )
-      } )
-      navigate('/', { replace: true })}
+    } )
+      navigate('/', { replace: true })
+  }
   
-    useEffect(() => { fetch ("/cards")
+  useEffect(() => { 
+    fetch ("/cards")
     .then(r=>r.json())
     .then(data => setMyCards(data))
   }, [])
-    console.log(loggedInUser)
-  useEffect(() => {
-    fetch ("/decks")
-    .then(r=>r.json())
-    .then(data => setMyDeck(...data))
-  }, [])
+    console.log("User?", loggedInUser)
+  // useEffect(() => {
+  //   fetch ("/decks")
+  //   .then(r=>r.json())
+  //   .then(data => setMyDeck(...data))
+  // }, [])
   
   return(
     <>
@@ -79,7 +98,7 @@ import DeckInfo from './DeckInfo';
                 <Route index element={<Decks decks={loggedInUser ? loggedInUser.decks : []} />}/>
                 <Route path=":id" element={<DeckInfo myCards={myCards}/>}/>
               </Route>
-              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}/>}/>
+              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setUserToLogin={ setUserToLogin}/>}/>
             </Routes>
           { !loggedInUser ?
             <h1>Welcome! Login?</h1> : <></>}
@@ -106,4 +125,4 @@ import DeckInfo from './DeckInfo';
   );
 }
 
-export default App;
+export default App

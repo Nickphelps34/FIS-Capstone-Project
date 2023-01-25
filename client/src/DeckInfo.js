@@ -1,12 +1,12 @@
 import  {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import Decks from "./Decks";
+// import Decks from "./Decks";
 
 
 const DeckInfo = ({myCards}) => {
 
   const [usersDeck, setUsersDeck] = useState({cards: []})
-  const [cardsToAdd, setCardsToAdd] = useState([])
+  // const [cardsToAdd, setCardsToAdd] = useState([])
   const {id} = useParams()
   console.log(usersDeck.cards)
   const renderCardLi = (myCard) => {
@@ -45,15 +45,17 @@ const DeckInfo = ({myCards}) => {
   
   //console.log(usersDeck)
   
-  useEffect(() => {fetch(`/decks/${id}`)
+  useEffect(() => {
+    fetch(`/decks/${id}`)
     .then( r => r.json())
-    .then( r => setUsersDeck(r))}, [])
+    .then( r => setUsersDeck(r))}, [id])
     console.log(usersDeck)
     
 
-  useEffect(() => {fetch('/cards')
-    .then( r => r.json())
-    .then( r => setCardsToAdd(r))}, [])
+  // useEffect(() => {
+  //   fetch('/cards')
+  //   .then( r => r.json())
+  //   .then( r => setCardsToAdd(r))}, [])
   
   
 
@@ -61,7 +63,7 @@ const DeckInfo = ({myCards}) => {
 
     <div>
       <div>
-        <ul key="uniqueKey3">Cards inside of the deck
+        <ul key="uniqueKey3">Cards inside of the deck :
             {usersDeck.cards.map( ( cardObj )=> { 
               return (
                 <li>{cardObj.card_name}</li>
@@ -69,15 +71,13 @@ const DeckInfo = ({myCards}) => {
              } ) }
         </ul>
       </div>
-      
-      <h1>Deck Name: {usersDeck.deck_name}</h1>
-      <h1>Commander: {usersDeck.deck_commander}</h1>
+      <h1> {usersDeck.details}</h1>
       <h1>Color: {usersDeck.deck_color}</h1>
+
 
       <menu key="uniqueKey2">{myCards.map(renderCardLi ) }</menu>
 
     </div>
   )
 }
-{/* <ul> { decks.map(renderDeckLi) }</ul> */}
 export default DeckInfo

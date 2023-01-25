@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import DeckInfo from "./DeckInfo";
 
 const DeckList = ({decks}) => {
   const navigate = useNavigate()
-  const params = useParams()
+  // const params = useParams()
   const renderDeckLi = (deckObj) => {
     //console.log(deckObj)
     const goToDeck = () => {

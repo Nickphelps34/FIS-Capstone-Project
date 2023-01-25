@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :collections
+  resources :collections, only: [:index, :show, :create]
   
   
   
-  resources :decks, only: [:index, :show, :create, :delete]
+  resources :decks, only: [:index, :show, :create, :update]
   
   
   
@@ -13,13 +13,6 @@ Rails.application.routes.draw do
   
   
   resources :users, only: [:index, :create, :show, :update]
-    # get "/users", to: "users#index"
-    
-    # get "/users/:id", to: "users#show"
-  
-  
-  # resources :home
-  # resrouces :sessions, only: [:create]
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

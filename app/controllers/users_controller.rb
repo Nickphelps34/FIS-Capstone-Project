@@ -17,21 +17,16 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    if
+    if user.valid?
+      
+      session[:user_id] = user.id
+
       render json: user, status: :created
+
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: {error: user.errors.full_messages}, status: :unprocessable_entity
     end
   end
-
-  # def update
-  #   if update = user.update(user_params)
-  #     render json: user
-  #   else
-  #     render json: user.errors, status: :unprocessable_entity
-  #   end
-  # end
-
 
 
   def update 
@@ -54,7 +49,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password, :id, :user)
+    params.permit(:name, :username, :email, :password)
   end
 
   def find_user

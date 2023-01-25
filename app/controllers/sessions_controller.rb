@@ -5,8 +5,7 @@ include ActionController::Cookies
     def create
       #byebug
       user_to_find_to_login = User.find_by( username: params[:username] ) 
-      if 
-        user_to_find_to_login
+      if  user_to_find_to_login
   
           if user_to_find_to_login.authenticate(params[:password])
             
@@ -16,12 +15,12 @@ include ActionController::Cookies
           
           else
 
-            render json: { error: " Incorrect Password " }
+            render json: { error: " Incorrect Password " }, status: :unauthorized
           
           end
         
       else
-        render json: { error: "Username or Password Don't Match" }
+        render json: { error: "User not found" }, status: :not_found
       
       end
   
