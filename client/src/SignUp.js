@@ -6,7 +6,7 @@ import UpdateUser from "./UpdateUser";
 
 
 
-const SignUp = ({loggedInUser,  setUserToLogin}) => {
+const SignUp = ({loggedInUser,  setLoggedInUser}) => {
   const [signupFormData, setSignupFormData] = useState({
     email: "" ,
     name: "" ,
@@ -26,7 +26,7 @@ const SignUp = ({loggedInUser,  setUserToLogin}) => {
         if (r.ok) {
           r.json().then((user) => {
             console.log("did a user come back?", user)
-            setUserToLogin(user)
+            setLoggedInUser(user)
             navigate ('/home')
 
           })

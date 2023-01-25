@@ -36,7 +36,7 @@ import DeckInfo from './DeckInfo';
     .then(r => {
       if (r.ok) {
         r.json().then( (user) => {
-          setUserToLogin(user )
+          setLoggedInUser(user )
           navigate('/home')
         }  )
       } else {
@@ -77,7 +77,7 @@ import DeckInfo from './DeckInfo';
                 <Route index element={<Decks decks={loggedInUser ? loggedInUser.decks : []} />}/>
                 <Route path=":id" element={<DeckInfo myCards={myCards}/>}/>
               </Route>
-              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setUserToLogin={setLoggedInUser}/>}/>
+              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser}/>}/>
             </Routes>
           { !loggedInUser ?
             <h1>Welcome! Login?</h1> : <></>}
