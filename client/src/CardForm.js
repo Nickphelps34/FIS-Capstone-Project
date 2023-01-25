@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-
-
 const CardForm = ({myCards}) => {
 
   const [newCardType, setNewCardType] = useState ("")
@@ -30,7 +28,6 @@ const CardForm = ({myCards}) => {
 
   return (
   <>
-    <br></br><br></br>
     <form className="new-card-form" onSubmit={handNewCardForm}>
       <input placeholder="card name" value={newCardName} onChange={(e)=>setNewCardName(e.target.value)}></input>
       <input placeholder="card type" value={newCardType} onChange={(e)=>setNewCardType(e.target.value)}></input>

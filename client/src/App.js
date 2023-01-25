@@ -10,27 +10,19 @@ import { useState, useEffect } from 'react';
 import DeckInfo from './DeckInfo';
 
   const App = () => {
-    // const [myDeck, setMyDeck] = useState([])
-    const [myCards, setMyCards] = useState([]) 
-    // const location = useLocation()
     const navigate = useNavigate()
-    // const [toggle, setToggle] = useState(false)
-    // const toggleForm = () =>{setToggle(!toggle)}
+    const [myCards, setMyCards] = useState([]) 
     const [loggedInUser, setLoggedInUser] = useState( null )
-
+    const [userToLogin, setUserToLogin] =useState(
+      {username: "", password: ""})
+      console.log("This is weird", userToLogin)
+      console.log("what is going on",loggedInUser)
   useEffect(()=>{
       fetch( "/userInSession" )
       .then( r => r.json() )
       .then( userAlreadyLoggedIn =>  
         setLoggedInUser(userAlreadyLoggedIn) )
   }, [] )
-  
-  const [userToLogin, setUserToLogin] =useState(
-    {
-      username: "",
-      password: ""
-    }
-  )
   const handleOnChangeToUserLoginIn = (e) =>{
     setUserToLogin( {...userToLogin , [e.target.name]: e.target.value } )
   }
@@ -54,14 +46,6 @@ import DeckInfo from './DeckInfo';
       }
     }) 
   }
-   
-   
-   
-   
-    // .then(data => {console.log(data)
-    // setLoggedInUser( data )
-    // })
-    // navigate('/home', { replace: true})}
 
   const handleLogout = () => {
     fetch ("/logout", {
@@ -79,11 +63,6 @@ import DeckInfo from './DeckInfo';
     .then(data => setMyCards(data))
   }, [])
     console.log("User?", loggedInUser)
-  // useEffect(() => {
-  //   fetch ("/decks")
-  //   .then(r=>r.json())
-  //   .then(data => setMyDeck(...data))
-  // }, [])
   
   return(
     <>
@@ -98,7 +77,7 @@ import DeckInfo from './DeckInfo';
                 <Route index element={<Decks decks={loggedInUser ? loggedInUser.decks : []} />}/>
                 <Route path=":id" element={<DeckInfo myCards={myCards}/>}/>
               </Route>
-              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setUserToLogin={ setUserToLogin}/>}/>
+              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setUserToLogin={setLoggedInUser}/>}/>
             </Routes>
           { !loggedInUser ?
             <h1>Welcome! Login?</h1> : <></>}

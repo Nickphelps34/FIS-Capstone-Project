@@ -13,10 +13,7 @@ const SignUp = ({loggedInUser,  setUserToLogin}) => {
     username: "" ,
     password: ""
   })
-  // const [errors, setErrors] = useState([])
   const navigate = useNavigate()
-  //const [username, setUsername] = useState("")
-  //const loggedInUserId = loggedInUser.id 
   const { email, name, username, password} = signupFormData
 
   const onFormSubmit = (e) => {
@@ -39,17 +36,6 @@ const SignUp = ({loggedInUser,  setUserToLogin}) => {
           })
         }
       } )
-    
-    
-    
-    
-    //   .then(r => {
-    //     if (r.errors) {
-    //       setErrors(r.errors)
-    //     } else {
-    //       navigate ('/', {replace: true})
-    //     }
-    // })
   }
   const handleChangeToSignUp = (e) => {
     //console.log(e)
@@ -94,11 +80,7 @@ const SignUp = ({loggedInUser,  setUserToLogin}) => {
           
         </form>
       <UpdateUser loggedInUser={loggedInUser}/>
-          {/* <input type="text" name={username} onChange={(e) => {setUsername(e.target.value)}}>Update </input> */}
-
     </>
-
   )
-
 }
 export default SignUp
