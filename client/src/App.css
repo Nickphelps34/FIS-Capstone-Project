@@ -1,12 +1,13 @@
-.body{
-  background-color: aqua;
+.input {
+  width: 100%;
+  border: 2px red
 }
 .App {
   text-align: center;
 }
 .img{
   display: inline-flex;
-  background-color: wheat;
+  background-color: rgba(9,121,36,0.7553615196078431);
   height: 200px;
   width: 200px;
   float: right;
@@ -24,6 +25,7 @@
   padding: 2rem 2rem;
   display: inline-block;
   justify-content: space-between;
+  display: top
 }
 .All-Nav-Links{
   color: green;
@@ -32,16 +34,15 @@
   display: inline-block;
 }
 .home-btn{
-  color:#1ba411;
+  color:#271800;
   display: inline-block;
   text-align: center;
   height: 100px;
   width: 100px;
-  position: relative;
+  position: center;
   display: block;
   top: 0px;
   right: 0px
-
 }
 .Cards-card{
   display: inline-block;
@@ -68,12 +69,35 @@
 .App-link {
   color: #1ba411;
 }
+.Login-Submit-button {
+  background: #cc1010;
+  background-image: -webkit-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -moz-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -ms-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: -o-linear-gradient(top, #cc1010, #b82b2f);
+  background-image: linear-gradient(to bottom, #cc1010, #b82b2f);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 21px;
+  padding: 4px 4px 4px 4px;
+  text-decoration: none; 
+}
+.Login-Form{
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.fieldset {
+  color:#271800;
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px;
+  border-radius: 6px;
+  min-width: 200p;
+}
+.login-legend {
+  font-size: 1.25em;
+  padding: 0 .25em;
+  color: black
 }

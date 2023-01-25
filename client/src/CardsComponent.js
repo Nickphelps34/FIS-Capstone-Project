@@ -7,7 +7,7 @@ const Cards = ({myCards}) => {
   return(
     <div>
       <h1>Cards Component</h1>
-      <Link to="/home" className="btn">Home</Link>
+      <Link to="/home" className="home-btn">Home</Link>
       <Link to="/CardList"> </Link>
       {myCards.map((myCards) =>
       <CardList myCards={myCards} key={myCards.id}/>

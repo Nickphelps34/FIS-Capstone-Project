@@ -45,45 +45,46 @@ const SignUp = ({loggedInUser,  setLoggedInUser}) => {
   return (
     <>
       <Link to="/home" className="home-btn">Home</Link>
-      <div>Sign up Here!</div>
-        
-        <label>Name</label>
-        <form className="Submit-form" 
-              onSubmit={onFormSubmit}>
-          <input
-            className="Submit-form-name"
-            type="text"
-            onChange={ handleChangeToSignUp }
-            name="name"
-            value={name}
-          />
-          <label>Username</label>
-          <input 
-            className="Submit-form-username"
-            type="text"
-            onChange={handleChangeToSignUp}
-            name="username"
-            value={username}
-          />
-          <label>Email</label>
-          <input 
-            className="Submit-form-email"
-            type="text"
-            name="email"
-            onChange={handleChangeToSignUp}
-            value={email}
-          />
-          <label>Password</label>
-          <input
-            className="Submit-form-password"
-            type="text"
-            name="password"
-            onChange={handleChangeToSignUp}
-            value={password}
-          />
-          <input type="submit" value="Sign Up!"/>
+      <div></div>
+        <fieldset>
+          <legend>Sign Up!</legend>
+            <form className="Submit-form" onSubmit={onFormSubmit}>
+            <label>Name</label>
+              <input
+                className="Submit-form-name"
+                type="text"
+                onChange={ handleChangeToSignUp }
+                name="name"
+                value={name}
+              />
+            <label>Username</label>
+              <input 
+                className="Submit-form-username"
+                type="text"
+                onChange={handleChangeToSignUp}
+                name="username"
+                value={username}
+              />
+            <label>Email</label>
+              <input 
+                className="Submit-form-email"
+                type="text"
+                name="email"
+                onChange={handleChangeToSignUp}
+                value={email}
+              />
+            <label>Password</label>
+              <input
+                className="Submit-form-password"
+                type="text"
+                name="password"
+                onChange={handleChangeToSignUp}
+                value={password}
+              />
+            <input type="submit" value="Sign Up!"/>
           
-        </form>
+          </form>
+        </fieldset>
       <UpdateUser loggedInUser={loggedInUser}/>
     </>
   )

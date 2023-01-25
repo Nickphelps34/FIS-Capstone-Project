@@ -7,7 +7,7 @@ const Decks = ({decks}) => {
   return (
     <>
       <h1>Deck Component</h1>
-      <Link to="/home" className="btn">Home</Link>
+      <Link to="/home" className="home-btn">Home</Link>
       {/* <Link to="/DeckList"> </Link> */}
       <DeckList decks={decks}></DeckList>
     </>

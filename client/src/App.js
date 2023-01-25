@@ -66,8 +66,8 @@ import DeckInfo from './DeckInfo';
       <div className="App" >
         { loggedInUser ? <h2>Welcome { loggedInUser.name }! </h2> : <></> }   
         <NavBar/> 
-            <Routes>
-            <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser}/>}/>
+            <Routes className="All-Nav-Links">
+              <Route path="/signup" element={<SignUp loggedInUser={loggedInUser}  setLoggedInUser={setLoggedInUser}/>}/>
               <Route path= "/" element={<div></div>} />
               <Route path="/home" element={<Home/>}/>
               <Route path="/cards" element={<Cards myCards={myCards}/>}/>
@@ -78,25 +78,29 @@ import DeckInfo from './DeckInfo';
               
             </Routes>
           { !loggedInUser ?
-            <h1>Welcome! Login?</h1> : <></>}
+            <h1 className='Log-in-Message'>Welcome! Login?</h1> : <></>}
           { !loggedInUser ?
-          <form className='Login-Submit-Form' onSubmit={ handleLoginSubmit }>
-            <input 
-              onChange={ handleOnChangeToUserLoginIn }
-              name="username"
-            />
-          
-            <input 
-              onChange={ handleOnChangeToUserLoginIn } 
-              type="password"
-              name="password"
-            />
-            <button type="submit" >submit</button>
-          </form>
+          <fieldset>
+            <legend className='login-legend'>Login</legend>
+              <form className='Login-Form' onSubmit={ handleLoginSubmit }>
+                <label for="username">Username:</label>
+                <input 
+                  onChange={ handleOnChangeToUserLoginIn }
+                  name="username"
+                />
+                <label for="password">Password:</label>
+                <input 
+                  onChange={ handleOnChangeToUserLoginIn } 
+                  type="password"
+                  name="password"
+                />
+                <button className='Login-Submit-button'>submit</button>
+              </form>
+          </fieldset>
           : <></>}
         
         
-        {loggedInUser ?  <h1> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>} 
+        {loggedInUser ?  <h1 className="Logout"> Logout?  <button onClick={handleLogout}>LogOut?</button></h1> : <></>} 
       </div>
     </>
   );

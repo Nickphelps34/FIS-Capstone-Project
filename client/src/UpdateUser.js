@@ -24,15 +24,18 @@ const UpdateUser = ({loggedInUser}) => {
 
   return (
       <div>
-        <label>Name</label>
-        <form onSubmit={onUpdateSubmit}>
-          <input
-            type="text"
-            onChange={ handleChangeToUpdate }
-            name="name"
-          />
-          <input type ="submit" value="Update!"/>
-        </form>
+        <fieldset className="Update-Fieldset">
+        <legend>Wanna change your name?</legend>
+          <label>Name</label>
+            <form onSubmit={onUpdateSubmit}>
+              <input
+                type="text"
+                onChange={ handleChangeToUpdate }
+                name="name"
+            />
+              <input type ="submit" value="Update!"/>
+          </form>
+        </fieldset>
     </div>
   )
 }
