@@ -6,7 +6,7 @@ const Decks = ({decks}) => {
   //console.log(decks)
   return (
     <>
-      <h1>Deck Component</h1>
+      <h1>Decks</h1>
       <Link to="/home" className="home-btn">Home</Link>
       {/* <Link to="/DeckList"> </Link> */}
       <DeckList decks={decks}></DeckList>

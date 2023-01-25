@@ -8,7 +8,7 @@ const CardForm = ({myCards}) => {
   const [newCardColor, setNewCardColor] = useState("")
   const [newCardName, setNewCardName] = useState("")
 
-  const handNewCardForm = (e) => {e.preventDefault()
+  const handNewCardForm = (e) => {
     let newCard = {
       id: "",
       card_type: newCardType,
@@ -32,13 +32,15 @@ const CardForm = ({myCards}) => {
       <legend className="card-legend">Add a Card?</legend>
         <form className="new-card-form" onSubmit={handNewCardForm}>
           <label className="card-name">Card Name:</label>
-            <input value={newCardName} onChange={(e)=>setNewCardName(e.target.value)}></input>
+            <input className="card-name-input" value={newCardName} onChange={(e)=>setNewCardName(e.target.value)}></input>
+          
           <label className="card-type">Card Type:</label>
-            <input value={newCardType} onChange={(e)=>setNewCardType(e.target.value)}></input>
+            <input className="card-type-input" value={newCardType} onChange={(e)=>setNewCardType(e.target.value)}></input>
+          
           <label className="mana-value">Mana Value</label>
-            <input value={newCardManaValue} onChange={(e)=>setNewCardManaValue(e.target.value)}></input>
+            <input className="mana-value-input" value={newCardManaValue} onChange={(e)=>setNewCardManaValue(e.target.value)}></input>
           <label className="card-color">Card Color</label>
-            <input value={newCardColor} onChange={(e)=>setNewCardColor(e.target.value)}></input>
+            <input className="card-color-input" value={newCardColor} onChange={(e)=>setNewCardColor(e.target.value)}></input>
           <input type="submit" className="new-card-btn"/>
         </form>
     </fieldset>    

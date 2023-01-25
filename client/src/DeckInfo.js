@@ -13,7 +13,7 @@ const DeckInfo = ({myCards}) => {
     return (
       <>
       <li key="uniqueId1"> {myCard.card_name} : {myCard.card_type}
-      <button key="uniqueId2" onClick={ () => {handleAddButton(myCard)} }  >Add Card</button>
+      <button className="add-card-btn" key="uniqueId2" onClick={ () => {handleAddButton(myCard)} }  >Add Card</button>
       </li>
       </>
     )
@@ -42,25 +42,12 @@ const DeckInfo = ({myCards}) => {
       
     })
   }
-  
-  //console.log(usersDeck)
-  
   useEffect(() => {
     fetch(`/decks/${id}`)
     .then( r => r.json())
     .then( r => setUsersDeck(r))}, [id])
     console.log(usersDeck)
-    
-
-  // useEffect(() => {
-  //   fetch('/cards')
-  //   .then( r => r.json())
-  //   .then( r => setCardsToAdd(r))}, [])
-  
-  
-
   return(
-
     <div>
       <div>
         <ul key="uniqueKey3">Cards inside of the deck :
@@ -73,10 +60,7 @@ const DeckInfo = ({myCards}) => {
       </div>
       <h1> {usersDeck.details}</h1>
       <h1>Color: {usersDeck.deck_color}</h1>
-
-
       <menu key="uniqueKey2">{myCards.map(renderCardLi ) }</menu>
-
     </div>
   )
 }

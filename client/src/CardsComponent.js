@@ -6,7 +6,7 @@ const Cards = ({myCards}) => {
   //console.log(myCards)
   return(
     <div>
-      <h1>Cards Component</h1>
+      <h1>Cards!</h1>
       <Link to="/home" className="home-btn">Home</Link>
       <Link to="/CardList"> </Link>
       {myCards.map((myCards) =>
